@@ -30,4 +30,17 @@ public class Controller {
         }
         return result;
     }
+
+    @RequestMapping("/getAddressData")
+    public String AddressData() throws IOException{
+        String fileName = "static/sample.txt";
+        ClassLoader classLoader = getClass().getClassLoader();
+        String result = "";
+        try (InputStream inputStream = classLoader.getResourceAsStream(fileName)) {
+            result = IOUtils.toString(inputStream, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 }
